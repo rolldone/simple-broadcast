@@ -1,0 +1,8 @@
+dist/
+node_modules/
+.env
+sync-config.json
+.sync_temp/
+.sync_collections/
+.sync_ignore
+sync-config.yaml

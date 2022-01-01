@@ -1,0 +1,31 @@
+services: 
+  croso_socket:
+    build: ./image_node
+    ports:
+      - "8473:3000"
+    expose:
+      - "3000"
+    volumes:
+      - "croso_socket_code:/opt/app"
+    command: >
+      bash -c  "
+        nodemon dist/app.js || true &&
+        tail -f > /dev/null
+      "
+      
+      # bash -c  "
+      #   npx ts-node app.ts || true &&
+      #   tail -f > /dev/null
+      # "
+    networks:
+      pimcore_network:
+    depends_on: []
+    links: []
+version: '3'
+networks:
+  pimcore_network:
+    name: pimcore_network
+    external: true
+volumes:
+  croso_socket_code:
+    external: true
